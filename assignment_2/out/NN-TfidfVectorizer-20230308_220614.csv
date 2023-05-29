@@ -1,0 +1,18 @@
+model,timestamp,vectorizer,train_accuracy,train_precision,train_recall,train_f1,test_accuracy,test_precision,test_recall,test_f1,model_params,vectorizer_params,train_metrics_report,test_metrics_report
+NN,2023-03-08 22:06:14.478817,TfidfVectorizer,0.9678374112075769,0.9678465026541064,0.9678374112075769,0.9678373974332467,0.9052880820836622,0.9052880820836622,0.9052880820836622,0.9052880820836622,"{'model': 'MLPClassifier', 'model_params': {'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': True, 'epsilon': 1e-08, 'hidden_layer_sizes': (100,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_fun': 15000, 'max_iter': 1000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': None, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}}","{'vectorizer': 'TfidfVectorizer', 'vectorizer_params': {'analyzer': 'word', 'binary': False, 'decode_error': 'strict', 'dtype': <class 'numpy.float64'>, 'encoding': 'utf-8', 'input': 'content', 'lowercase': True, 'max_df': 0.98, 'max_features': 1000, 'min_df': 0.02, 'ngram_range': (1, 2), 'norm': 'l2', 'preprocessor': None, 'smooth_idf': True, 'stop_words': None, 'strip_accents': None, 'sublinear_tf': False, 'token_pattern': '(?u)\\b\\w\\w+\\b', 'tokenizer': None, 'use_idf': True, 'vocabulary': None}}","              precision    recall  f1-score   support
+
+        FAKE       0.97      0.97      0.97      2529
+        REAL       0.97      0.97      0.97      2539
+
+    accuracy                           0.97      5068
+   macro avg       0.97      0.97      0.97      5068
+weighted avg       0.97      0.97      0.97      5068
+","              precision    recall  f1-score   support
+
+        FAKE       0.91      0.91      0.91       635
+        REAL       0.91      0.91      0.91       632
+
+    accuracy                           0.91      1267
+   macro avg       0.91      0.91      0.91      1267
+weighted avg       0.91      0.91      0.91      1267
+"

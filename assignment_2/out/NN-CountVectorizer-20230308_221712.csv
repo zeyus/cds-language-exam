@@ -1,0 +1,18 @@
+model,timestamp,vectorizer,train_accuracy,train_precision,train_recall,train_f1,test_accuracy,test_precision,test_recall,test_f1,model_params,vectorizer_params,train_metrics_report,test_metrics_report
+NN,2023-03-08 22:17:12.834603,CountVectorizer,0.9859905288082084,0.9860932124016355,0.9859905288082084,0.9859892975673723,0.9155485398579322,0.9172530093461169,0.9155485398579322,0.9155321254265818,"{'model': 'MLPClassifier', 'model_params': {'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': True, 'epsilon': 1e-08, 'hidden_layer_sizes': (100,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_fun': 15000, 'max_iter': 1000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': None, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}}","{'vectorizer': 'CountVectorizer', 'vectorizer_params': {'analyzer': 'word', 'binary': False, 'decode_error': 'strict', 'dtype': <class 'numpy.int64'>, 'encoding': 'utf-8', 'input': 'content', 'lowercase': True, 'max_df': 0.98, 'max_features': 1000, 'min_df': 0.02, 'ngram_range': (1, 2), 'preprocessor': None, 'stop_words': None, 'strip_accents': None, 'token_pattern': '(?u)\\b\\w\\w+\\b', 'tokenizer': None, 'vocabulary': None}}","              precision    recall  f1-score   support
+
+        FAKE       0.98      0.99      0.99      2546
+        REAL       0.99      0.98      0.99      2522
+
+    accuracy                           0.99      5068
+   macro avg       0.99      0.99      0.99      5068
+weighted avg       0.99      0.99      0.99      5068
+","              precision    recall  f1-score   support
+
+        FAKE       0.89      0.94      0.92       618
+        REAL       0.94      0.89      0.92       649
+
+    accuracy                           0.92      1267
+   macro avg       0.92      0.92      0.92      1267
+weighted avg       0.92      0.92      0.92      1267
+"

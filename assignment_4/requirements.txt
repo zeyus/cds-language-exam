@@ -1,0 +1,8 @@
+--index-url https://download.pytorch.org/whl/cu117
+datasets
+matplotlib
+optimum
+torch
+torchvision
+torchaudio
+transformers

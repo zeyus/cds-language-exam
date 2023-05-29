@@ -1,0 +1,7 @@
+deepspeed
+matplotlib
+pandas
+pydot
+scikit-learn
+tensorflow
+tqdm
