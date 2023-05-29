@@ -1,0 +1,11 @@
+accelerate
+transformers
+--pre
+--extra-index-url https://download.pytorch.org/whl/nightly/cu118
+datasets
+matplotlib
+optimum
+torch
+torchvision
+torchaudio
+# git+https://github.com/huggingface/accelerate
