@@ -1,11 +1,19 @@
-accelerate
+evaluate
+importlib
+nltk
+rouge-score
 transformers
 --pre
+# accelerate
+# deepspeed
+nvidia-ml-py3
 --extra-index-url https://download.pytorch.org/whl/nightly/cu118
 datasets
 matplotlib
 optimum
+tensorboard
 torch
+torch-tb-profiler
 torchvision
 torchaudio
 # git+https://github.com/huggingface/accelerate
