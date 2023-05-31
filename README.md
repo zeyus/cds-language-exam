@@ -35,6 +35,7 @@ Complete portfolio repository: [https://github.com/zeyus/cds-language-exam](http
 - Assignment 4: [https://github.com/zeyus/cds-language-exam/tree/main/assignment_4](https://github.com/zeyus/cds-language-exam/tree/main/assignment_4)
 - Assignment 5: [https://github.com/zeyus/cds-language-exam/tree/main/assignment_5](https://github.com/zeyus/cds-language-exam/tree/main/assignment_5)
 
+This document is available as a PDF in the repository: [https://github.com/zeyus/cds-language-exam/blob/main/README.pdf](https://github.com/zeyus/cds-language-exam/blob/main/README.pdf)
 
 # Assignment 1 - Extracting linguistic features using spaCy
 

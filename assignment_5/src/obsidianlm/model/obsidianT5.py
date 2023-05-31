@@ -7,15 +7,16 @@ from transformers import (
     DefaultDataCollator,
     BatchEncoding,
     T5ForConditionalGeneration,
-    T5TokenizerFast
+    T5TokenizerFast,
 )
 import torch
-from transformers.trainer import EvalPrediction
+from transformers.trainer import EvalPrediction, get_last_checkpoint
 import typing as t
 import numpy as np
 import evaluate
 from nltk.tokenize import sent_tokenize
 from pathlib import Path
+import gc
 
 
 def get_model(
@@ -25,6 +26,26 @@ def get_model(
             T5TokenizerFast,
             t.Callable[[t.Any], t.Dict]]:
     model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-base")
+    tokenizer = T5TokenizerFast.from_pretrained(
+        "google/flan-t5-base",
+        use_fast=True)
+    preprocess_fn = get_preprocess_fn(
+        tokenizer,
+        max_len_in,
+        max_len_out,
+        padding="max_length"
+    )
+    return model, tokenizer, preprocess_fn
+
+
+def get_model_from_checkpoint(
+        checkpoint_path: Path,
+        max_len_in: int = 512,
+        max_len_out: int = 512) -> t.Tuple[
+            T5ForConditionalGeneration,
+            T5TokenizerFast,
+            t.Callable[[t.Any], t.Dict]]:
+    model = T5ForConditionalGeneration.from_pretrained(checkpoint_path)
     tokenizer = T5TokenizerFast.from_pretrained(
         "google/flan-t5-base",
         use_fast=True)
@@ -124,9 +145,9 @@ def get_preprocess_fn(
                 extra_token_counter += 1
 
         # Convert tensors back to half precision if necessary
-        if device.type == 'cuda':
-            input_ids = input_ids.half()
-            attention_mask = attention_mask.half()
+        # if device.type == 'cuda':
+        #     input_ids = input_ids.half()
+        #     attention_mask = attention_mask.half()
 
         return {
             "input_ids": input_ids.squeeze(0),
@@ -205,6 +226,10 @@ def train_model(
 
         def compute_metrics(eval_pred: EvalPrediction) -> t.Dict:
             logits, labels = eval_pred.predictions, eval_pred.label_ids
+            if isinstance(logits, tuple):
+                logits = logits[0]
+            if isinstance(labels, tuple):
+                labels = labels[0]
             # logits, labels = eval_pred
 
             # Ensure these are torch tensors
@@ -218,8 +243,8 @@ def train_model(
             labels = labels[mask]
 
             # convert back to numpy if needed
-            logits = logits.numpy()
-            labels = labels.numpy()
+            logits = logits.cpu().numpy()
+            labels = labels.cpu().numpy()
 
             # compute the softmax
             logits = np.exp(logits) / np.exp(logits).sum(-1, keepdims=True)
@@ -227,24 +252,29 @@ def train_model(
             # compute the loss
             loss = -np.log(logits[np.arange(len(logits)), labels]).mean()
 
-            num_labels = np.count_nonzero(mask.numpy())
-
+            num_labels = np.count_nonzero(mask.cpu().numpy())
+            
             return {"loss": loss, "num_labels": num_labels}
-
-        metric_fn = compute_metrics
+        
+        def wrap_metric_fn(eval_pred: EvalPrediction) -> t.Dict:
+            metrics = compute_metrics(eval_pred)
+            gc.collect()
+            torch.cuda.empty_cache()
+            return metrics
+        metric_fn = wrap_metric_fn
 
     default_args = {
         "evaluation_strategy": "no",
         "num_train_epochs": 5,
         "log_level": "error",
-        "fp16": True,
-        "tf32": False,
+        "fp16": False,
+        # "tf32": False,
         "learning_rate": 3e-4,
         "gradient_accumulation_steps": 16,
         "report_to": "tensorboard",
         "gradient_checkpointing": True,  # memory savings, but slower
         "optim": "adamw_apex_fused",
-        "save_steps": 1,
+        "save_steps": 5,
         "save_total_limit": 5,
         "dataloader_pin_memory": True,
         "logging_steps": 1,
@@ -260,7 +290,7 @@ def train_model(
         default_args["logging_strategy"] = "steps"
     if eval_dataset:
         default_args["evaluation_strategy"] = "steps"
-        default_args["eval_steps"] = 1
+        default_args["eval_steps"] = 5
         default_args["do_eval"] = True
 
     if not mask_lm:
@@ -304,4 +334,9 @@ def train_model(
             compute_metrics=metric_fn,
             data_collator=data_collator,
         )
-    trainer.train(resume_from_checkpoint=False)
+    last_checkpoint = get_last_checkpoint(training_args.output_dir)
+    if last_checkpoint:
+        print(f"Resuming from checkpoint: {last_checkpoint}")
+        trainer.train(resume_from_checkpoint=True)
+    else:
+        trainer.train()
