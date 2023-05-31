@@ -112,7 +112,7 @@ This will provide a progress bar and output something like the following to the 
 2023-02-25 11:11:41 - INFO - Getting list of files
 2023-02-25 11:11:41 - INFO - Found 1497 files
 2023-02-25 11:11:41 - INFO - Extracting linguistic information
-100%|██████████████████████████████████████| 1497/1497 [02:28<00:00, 10.06it/s]
+100%|--------------------------------------| 1497/1497 [02:28<00:00, 10.06it/s]
 2023-02-25 11:14:10 - INFO - Writing summary tables
 ```
 
