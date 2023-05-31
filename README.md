@@ -813,3 +813,37 @@ options:
                         Path to your obsidian vault. (default: vault)
 ```
 
+### Implementation
+
+The base model used for this project is the [Flan-T5-Base](https://huggingface.co/google/flan-t5-base) model, it is interesting because it can respond to various prompts and perform different language tasks.
+
+In order to adapt the model to my notes, the markdown files are loaded
+
+Training learning rate: 
+
+![trainin_learning_rate](./assignment_5/out/train_learning_rate.svg)
+
+Training loss:
+
+![train_loss](./assignment_5/out/train_loss.svg)
+
+Validation loss:
+
+![val_loss](./assignment_5/out/eval_loss.svg)
+
+
+Due to memory leak issues, the graphs look like there are some duplicate data points because the model training had to be resumed from saved checkpoints.
+
+The results of some inference tests were not very good, although it's possible that some tweaking of the preprocessing and tokenization could result in a massive improvement. I will definitely be pursuing this further.
+
+
+
+### Future Improvements
+
+There are many ways this problem could be approached, including trying a different model completely, but assuming that Flan-T5-Base is used, there are a few ways that the model could be improved.
+
+- Data preprocessing: Instead of treating each file individually, the files could be concatenated first into a single long string, and then chunked into the max token length (512 for Flan-T5-Base). This would allow the model to learn from the context of the entire vault, instead of just the individual files.
+- Labelled data: Manual (or model-created, curated) summaries could be added to the data as a way to improve the model's ability to summarize the notes, specifically in the context of my notes from university.
+- Optimizer: The optimizer used was adafactor, which is a good general optimizer, but it is possible that using a different optimizer could improve the model's performance.
+- Batch size, etc: Due to GPU memory constraints, the batch size was set to 1, but this could be increased if the model was trained on a GPU with more memory. The number of epochs could also be increased, but the model was trained for 1.62 epochs, due to time constraints.
+

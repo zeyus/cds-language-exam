@@ -83,6 +83,25 @@ The model is then trained on the data, and the loss is calculated. The loss is t
 
 
 
+Training learning rate: 
+
+![trainin_learning_rate](./out/train_learning_rate.svg)
+
+Training loss:
+
+![train_loss](./out/train_loss.svg)
+
+Validation loss:
+
+![val_loss](./out/eval_loss.svg)
+
+
+Due to memory leak issues, the graphs look like there are some duplicate data points because the model training had to be resumed from saved checkpoints.
+
+The results of some inference tests were not very good, although it's possible that some tweaking of the preprocessing and tokenization could result in a massive improvement. I will definitely be pursuing this further.
+
+
+
 ### Future Improvements
 
 There are many ways this problem could be approached, including trying a different model completely, but assuming that Flan-T5-Base is used, there are a few ways that the model could be improved.
