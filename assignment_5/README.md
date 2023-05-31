@@ -75,7 +75,13 @@ options:
 
 The base model used for this project is the [Flan-T5-Base](https://huggingface.co/google/flan-t5-base) model, it is interesting because it can respond to various prompts and perform different language tasks.
 
-In order to adapt the model to my notes, the markdown files are loaded
+In order to adapt the model to my notes, the markdown files are loaded and then tokenized. As part of the preprocessing steps, the special sentinal tokens are inserted into the text and the corresponding values are added to the labels.
+
+The model is then trained on the data, and the loss is calculated. The loss is then used to update the model weights, and the process is repeated for the number of epochs specified.
+
+### Results
+
+
 
 ### Future Improvements
 
@@ -85,3 +91,4 @@ There are many ways this problem could be approached, including trying a differe
 - Labelled data: Manual (or model-created, curated) summaries could be added to the data as a way to improve the model's ability to summarize the notes, specifically in the context of my notes from university.
 - Optimizer: The optimizer used was adafactor, which is a good general optimizer, but it is possible that using a different optimizer could improve the model's performance.
 - Batch size, etc: Due to GPU memory constraints, the batch size was set to 1, but this could be increased if the model was trained on a GPU with more memory. The number of epochs could also be increased, but the model was trained for 1.62 epochs, due to time constraints.
+- specific tasks: The model could be trained on specific tasks, such as summarization, or question answering, which would allow the model to be more specific in its responses, rather than filling in the blanks.
