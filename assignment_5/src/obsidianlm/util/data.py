@@ -1,7 +1,7 @@
 from pathlib import Path
 import re
 import typing as t
-from datasets import Value, Features, Dataset
+from datasets import Value, Features, Dataset, DatasetDict
 import os
 import random
 
@@ -83,7 +83,8 @@ def get_links(contents: str) -> t.List[t.Dict[str, str]]:
 
 def parse_markdown_files(
         files: t.List[str],
-        shuffle: bool = True) -> t.Dict:
+        shuffle: bool = False,
+        mask_lm: bool = True) -> t.Dict:
     """Parse markdown files into a list of strings.
 
     Args:
@@ -97,10 +98,11 @@ def parse_markdown_files(
 
     data = {
         "idx": [],
-        "context": [],
         "text": [],
-        "summary": []
     }
+    if not mask_lm:
+        data["context"] = []
+        data["summary"] = []
     for i, file in enumerate(files):
         metadata = prepare_file_metadata(file)
         if metadata is None:
@@ -116,16 +118,19 @@ def parse_markdown_files(
         text = metadata["contents"]
         summary = text.split("\n")[0]
         data["idx"].append(i)
-        data["context"].append(context)
         data["text"].append(text)
-        data["summary"].append(summary)
+        if not mask_lm:
+            data["context"].append(context)
+            data["summary"].append(summary)
+
     return data
 
 
 def get_dataset(
         files: t.List[str],
         preprocess_fn: t.Callable[[t.Any], t.Dict],
-        nproc: t.Optional[int] = None) -> Dataset:
+        nproc: t.Optional[int] = None,
+        mask_lm: bool = True) -> Dataset:
     """Get a dataset from a directory of markdown files.
 
     Args:
@@ -135,14 +140,17 @@ def get_dataset(
     Returns:
         IterableDataset: dataset
     """
-    ds_features = Features({
+
+    ds_feature_spec = {
         "idx": Value("int32", id=None),
-        "context": Value("string", id=None),
         "text": Value("string", id=None),
-        "summary": Value("string", id=None),
-    })
+    }
+    if not mask_lm:
+        ds_feature_spec["context"] = Value("string", id=None)
+        ds_feature_spec["summary"] = Value("string", id=None)
+    ds_features = Features(ds_feature_spec)
     ds = Dataset.from_dict(
-        parse_markdown_files(files),
+        parse_markdown_files(files, mask_lm=mask_lm),
         features=ds_features,
     )
 
@@ -154,32 +162,33 @@ def get_dataset(
     return ds.with_format("torch")
 
 
-def get_dataloader(
+def get_datasets(
         source_dir: Path,
-        preprocess_fn: t.Callable[[t.Any], t.Dict]) -> t.Tuple[Dataset, int]:
-    """Get a dataloader from a directory of markdown files.
+        preprocess_fn: t.Callable[[t.Any], t.Dict],
+        validation_split: float = 0.9,
+        mask_lm: bool = True) -> t.Tuple[Dataset, Dataset]:
+    """Create datasets from a directory of markdown files.
 
     Args:
         source_dir (Path): directory to load from
         preprocess_fn (t.Callable[[t.Any], t.Dict]): preprocessing function
-        batch_size (int, optional): batch size. Defaults to 1.
+        validation_split (float, optional): validation split. Defaults to 0.8.
 
     Returns:
-        DataLoader: dataloader
-        int: number of files loaded
+        t.Tuple[Dataset, Dataset]: train and validation datasets
     """
     files = load_markdown_files(source_dir)
-    ds_length = len(files)
-    n_logical_cores = os.cpu_count()
-    ds = get_dataset(files, preprocess_fn, n_logical_cores)
-    # ds.__class__.__len__ = MethodType(lambda self: ds_length, ds)
-    print(len(ds))
 
-    # dl = DataLoader(
-    #     ds,  # type: ignore
-    #     batch_size=batch_size,
-    #     pin_memory=True,
-    #     shuffle=False,
-    #     num_workers=n_logical_cores if n_logical_cores else 1
-    # )
-    return ds, ds_length
+    n_logical_cores = os.cpu_count()
+    ds = get_dataset(
+        files=files,
+        preprocess_fn=preprocess_fn,
+        nproc=n_logical_cores,
+        mask_lm=mask_lm
+    )
+
+    ds = ds.train_test_split(
+        train_size=validation_split,
+        keep_in_memory=True)
+
+    return ds["train"], ds["test"]

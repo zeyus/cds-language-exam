@@ -34,7 +34,7 @@ def common_args(parser: argparse.ArgumentParser):
         '--batch-size',
         help="Batch size for training.",
         type=int,
-        default=8
+        default=4
     )
     parser.add_argument(
         '-V',
@@ -86,19 +86,24 @@ def run():
         max_len_out=512,
     )
 
-    train_dl, ds_len = data.get_dataloader(
-        args.vault_path,
-        preprocess_fn
+    train_ds, val_ds = data.get_datasets(
+        source_dir=args.vault_path,
+        preprocess_fn=preprocess_fn,
+        validation_split=0.9,
+        mask_lm=True,
     )
-    logging.info(f"Train dataloader: {train_dl}")
+
+    logging.info(f"Train dataloader: {train_ds}")
     print_gpu_utilization()
     obsidianT5.train_model(
         model=model,
         tokenizer=tokenizer,
-        train_dataset=train_dl,
+        train_dataset=train_ds,
+        eval_dataset=val_ds,
         batch_size=args.batch_size,
-        ds_length=ds_len,
         out_path=args.output_path,
+        rouge=False,
+        mask_lm=True,
     )
 
     print_gpu_utilization()

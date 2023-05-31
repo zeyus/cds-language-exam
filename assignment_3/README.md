@@ -1,32 +1,77 @@
-# RNN Text Generation
+# Assignment 3 - Language modelling and text generation using RNNs
 
-## Setup
+## Original Assignment Description
 
-### Prerequisites
+Text generation is hot news right now!
+
+For this assignemnt, you're going to create some scripts which will allow you to train a text generation model on some culturally significant data - comments on articles for *The New York Times*. You can find a link to the data [here](https://www.kaggle.com/datasets/aashita/nyt-comments).
+
+You should create a collection of scripts which do the following:
+
+- Train a model on the Comments section of the data
+  - [Save the trained model](https://www.tensorflow.org/api_docs/python/tf/keras/models/save_model)
+- Load a saved model
+  - Generate text from a user-suggested prompt
+
+### Objectives
+
+Language modelling is hard and training text generation models is doubly hard. For this course, we lack somewhat the computationl resources, time, and data to train top-quality models for this task. So, if your RNNs don't perform overwhelmingly, that's fine (and expected). Think of it more as a proof of concept.
+
+- Using TensorFlow to build complex deep learning models for NLP
+- Illustrating that you can structure repositories appropriately
+- Providing clear, easy-to-use documentation for your work.
+
+### Some tips
+
+One big thing to be aware of - unlike the classroom notebook, this assignment is working on the *Comments*, not the articles. So two things to consider:
+
+1) The Comments data might be structured differently to the Articles data. You'll need to investigate that;
+2) There are considerably more Comments than articles - plan ahead for model training!
+
+### Additional pointers
+
+- Make sure not to try to push the data to Github!
+- *Do* include the saved models that you output
+- Make sure to structure your repository appropriately
+  - Include a readme explaining relevant info
+    - E.g where does the data come from?
+    - How do I run the code?
+- Make sure to include a requirements file, etc...
+## Assignment 3, Luke Ring
+
+Repository: [https://github.com/zeyus/cds-language-exam/tree/main/assignment_3](https://github.com/zeyus/cds-language-exam/tree/main/assignment_3)
+
+### Contribution
+
+This assignment was completed by me individually and independently, the code contained in this repository is my own work.
+
+### Setup
+
+#### Prerequisites
 
 - Python 3.9
 - Optional CUDA compatible GPU for training
 
-### Clone repository
+#### Clone repository
 
 ```bash
-git clone https://github.com/AU-CDS/assignment-3---rnns-for-text-generation-zeyus.git zeyus-assignment-3
-cd zeyus-assignment-3
+git clone https://github.com/zeyus/cds-language-exam
+cd cds-language-exam/assignment_3
 ```
 
-### Install dependencies
+#### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Data
+#### Data
 
 The dataset should be the NYT comments dataset from Kaggle, which can be found [here](https://www.kaggle.com/aashita/nyt-comments). By default the `src/text-gen-rnn.py` script expects the dataset to be located in `data/nyt_comments`.
 
-## Usage
+### Usage
 
-### General
+#### General
 
 For help you can run the main script `src/text-gen-rnn.py` with the `--help` flag.
 
@@ -69,7 +114,7 @@ optional arguments:
                         Minimum length of generated text (in tokens, not characters). (default: 0)
 ```
 
-### Training
+#### Training
 
 To train a model you can run the main script `src/text-gen-rnn.py` with the `train` argument.
 Additionally, you can specify `-e EPOCHS` and `-b BATCH_SIZE` to change the number of epochs and batch size respectively.
@@ -81,7 +126,7 @@ python src/text-gen-rnn.py train -e 10 -b 64
 
 This will train the model, save it to `models/` and plot the training history to `out/`. Also the prepared datasets and encoder are saved in `data/`. Therefore, if you change the vocabulary size or sequence length, you should delete the `data/encoder` directory to recompute the encoder (this will also regenerate the datasets, as the datasets are capped to the sequence lenght).
 
-### Prediction
+#### Prediction
 
 To predict text you can run the main script `src/text-gen-rnn.py` with the `predict` argument. Additionally, you can specify `-c FROM_CHECKPOINT` to load a model from a checkpoint, `-t TEMPERATURE` to change the temperature for sampling, `-n TOP_N` to change the top N for sampling and `-m MIN_LENGTH` to change the minimum length of the generated text.
 
@@ -92,9 +137,9 @@ python src/text-gen-rnn.py -c models/rnn/20230502_095615_rnn_2000x300_batch64_it
 ```
 
 
-## Results
+### Results
 
-## Model Architecture
+### Model Architecture
 
 The model was designed to be a simple RNN with a single bi-directional GRU layer. It was trained with the idea of a sequence-to-sequence architecture, thus the final dense layer was wrapped in a `TimeDistributed` layer.
 
@@ -104,9 +149,9 @@ The model architecture can be seen in the following figure:
 
 The model was configured with a maximum vocabulary size of 2000, and a maximum sequence length of 300.
 
-### Training
+#### Training
 
-#### Data preprocessing
+##### Data preprocessing
 
 The data were split into training and validation sets, with a 90/10 split. The dataset `x` consisted of either:
 
@@ -123,22 +168,22 @@ Each `x` entry was preceded by a special token `<ITEM>` and each `y` entry was w
 Data were tokenized using the keras `TextVectorizer`, and padded to the maximum sequence length.
 
 
-#### Model training
+##### Model training
 
 The training was done on a GTX 1070 with 8GB of VRAM. The training took about 1 hour per epoch, and the model was trained for 10 epochs with a batch size of 64. Unfortunately the training history was lost due to a bug in the script, but the training loss was around 4.2x after 10 epochs. Next time I'll definitely use the CSVLogger callback to save the training history, that way graphs can be generated later and the history is guaranteed to be saved. :)
 
-### Model Metrics
+#### Model Metrics
 
 The model was evaluated using the perplexity metric. The perplexity was calculated on the training set and validation set, with the model optimizing for the training perplexity. The model loss function was the categorical crossentropy loss function, and perplexity was calculated as `exp(mean(categorical_crossentropy))`. At the end of training, the model trainig perplexity was around 750.
 
 
-### Prediction
+#### Prediction
 
 The model outputs both a word-by-word prediction, and a sequence-to-sequence prediction. The word-by-word prediction is done by sampling from the output distribution of the model, the sequence-to-sequence prediction
 samples the most likely word at each timestep, and if the output is shorter than the minimum length, the model is re-run with the previous output as input until the minimum length is reached.
 
 
-#### Examples
+##### Examples
 
 Unfortunately most of what the model outputs is somewhat context-aware gibberish, but there are some examples where the model accidentally outputs something that makes a bit of sense. Increasing the models complexity (vocabulary size, adding statefulness, etc.) might improve the results.
 
@@ -196,7 +241,7 @@ INFO:root:Word by word result:
 while the author describes certain advantages that come from using electric vehicles , i disagree entirely . muslim education across existing age learn details human residential crisis avoid protection often politics campaign voter minority housing single words flight planning once rural mental push works rosenstein airlines network wouldnt necessary king look back critical speech disease 60 brought led elected instead growing parents devices islamic wanted found doctor 60 refugees without systems friday 12 warming students id grow added putting challenge had skills tests showed talks articles integrity become k wanted strong corrupt destroy economic several column supreme lost program etc waste another required yourself our also paris absolutely markets third vote thus facing welfare several anymore also personally chinese facing think beginning tweets votes opposition should even memo biological defense effect have getting king she respect leave treated de caption apply prison price you knows completely sets abuse majority opposition year g grow more young purchased changes times changes difficult expensive nice european possibly account pass seem due thursday source claims rex column false last speech days cambridge verdicts do rural memo served shutdown programs offered consider big got ability leadership melania airport morning doctors shouldnt bottom retirement true board rate search homeland ?the decide do unemployment male hate enough regardless obama tower property course we friday neil oreilly average caused ! starting column china short pennsylvania came pass choice final pre marjory t last personal except ivanka schools approach deserve afford infrastructure already march propaganda surprise pollution movement sanders played husband 100 watching millions situation officers lie threat room remember let above work least deferred seeking if 2017 london complex future third stephanie consequences provide reform long looks city week nuclear heres until walk 000 happy step say served reporting lawyer con serve criminal purchased gone sense key
 ```
 
-## Final note
+### Final note
 
 Althoguh the predicted text weren't that great, it seems that the biggest issue with the sequence to sequence model is repetition, especially when you want to generate a specific length of text. I think the best approach to remedy this would be to add statefulness to the model and potentially a beam search. Either way, I have tried a bunch of different model architectures and options and some of them failed to generate anything beyond a bunch of commas, or "the", etc.
 

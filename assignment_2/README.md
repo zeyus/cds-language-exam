@@ -1,17 +1,55 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10420172&assignment_repo_type=AssignmentRepo)
 # Assignment 2 - Text classification benchmarks
 
-## Setup
+## Original Assignment Description
+
+This assignment is about using ```scikit-learn``` to train simple (binary) classification models on text data. For this assignment, we'll continue to use the Fake News Dataset that we've been working on in class.
+
+For this exercise, you should write *two different scripts*. One script should train a logistic regression classifier on the data; the second script should train a neural network on the same dataset. Both scripts should do the following:
+
+- Be executed from the command line
+- Save the classification report to the folder called ```out```
+- Save the trained models and vectorizers to the folder called ```models```
+
+### Objective
+
+This assignment is designed to test that you can:
+
+1. Train simple benchmark machine learning classifiers on structured text data;
+2. Produce understandable outputs and trained models which can be reused;
+3. Save those results in a clear way which can be shared or used for future analysis
+
+### Some notes
+
+- Saving the classification report to a text file can be a little tricky. You will need to Google this part!
+- You might want to challenge yourself to create a third script which vectorizes the data separately, and saves the new feature extracted dataset. That way, you only have to vectorize the data once in total, instead of once per script. Performance boost!
+
+### Additional comments
+
+Your code should include functions that you have written wherever possible. Try to break your code down into smaller self-contained parts, rather than having it as one long set of instructions.
+
+For this assignment, you are welcome to submit your code either as a Jupyter Notebook, or as ```.py``` script. If you do not know how to write ```.py``` scripts, don't worry - we're working towards that!
+
+Lastly, you are welcome to edit this README file to contain whatever informatio you like. Remember - documentation is important!
+
+## Assignment 2, Luke Ring
+
+Repository: [https://github.com/zeyus/cds-language-exam/tree/main/assignment_2](https://github.com/zeyus/cds-language-exam/tree/main/assignment_2)
+
+### Contribution
+
+This assignment was completed by me individually and independently, the code contained in this repository is my own work.
+
+### Setup
 
 Clone the repository and install the requirements:
 
 ```bash
-git clone https://github.com/AU-CDS/assignment-2---text-classification-zeyus
-cd assignment-2---text-classification-zeyus
+git clone https://github.com/zeyus/cds-language-exam
+cd cds-language-exam/assignment_2
 pip install -r requirements.txt
 ```
 
-## Running text classification benchmarks
+### Running text classification benchmarks
 
 There are two main scripts for running the text classification benchmarks:
 
@@ -59,4 +97,66 @@ The reports contain the following information/columns:
 
 It's not as pretty as I'd have liked but it can be read into a pandas dataframe for further analysis/summary.
 
-I also was planning to add a script for doing a parameter sweep and add arguments for model and vectorizer parameters, but this is already overengineered (although, it's quite easy to add that in now!)
+### Results
+
+The following results are from classifiers run on the `test` data set.
+
+#### Logistic Regression With Count Vectorizer
+
+Max iterations: 100
+
+```text
+              precision    recall  f1-score   support
+
+        FAKE       0.89      0.90      0.90       619
+        REAL       0.90      0.90      0.90       648
+
+    accuracy                           0.90      1267
+   macro avg       0.90      0.90      0.90      1267
+weighted avg       0.90      0.90      0.90      1267
+```
+
+#### Logistic Regression With TF-IDF Vectorizer
+
+Max iterations: 100
+
+```text
+              precision    recall  f1-score   support
+
+        FAKE       0.89      0.90      0.89       629
+        REAL       0.90      0.89      0.90       638
+
+    accuracy                           0.90      1267
+   macro avg       0.90      0.90      0.90      1267
+weighted avg       0.90      0.90      0.90      1267
+```
+
+#### Neural Network With Count Vectorizer
+
+Max iterations: 1000
+
+```text
+              precision    recall  f1-score   support
+
+        FAKE       0.89      0.94      0.92       618
+        REAL       0.94      0.89      0.92       649
+
+    accuracy                           0.92      1267
+   macro avg       0.92      0.92      0.92      1267
+weighted avg       0.92      0.92      0.92      1267
+```
+
+#### Neural Network With TF-IDF Vectorizer
+
+Max iterations: 1000
+
+```text
+              precision    recall  f1-score   support
+
+        FAKE       0.91      0.91      0.91       635
+        REAL       0.91      0.91      0.91       632
+
+    accuracy                           0.91      1267
+   macro avg       0.91      0.91      0.91      1267
+weighted avg       0.91      0.91      0.91      1267
+```
