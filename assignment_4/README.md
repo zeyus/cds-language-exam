@@ -101,7 +101,7 @@ After the csv file has been created, the script can be run with the `-V` argumen
 Sample of the predictions (complete predictions can be found in the [news_emotions.csv](./out/news_emotions.csv) file):
 
 | text | emotion | label |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 |You Can Smell Hillary’s Fear|fear|FAKE|
 |Watch The Exact Moment Paul Ryan Committed Political Suicide At A Trump Rally (VIDEO)|sadness|FAKE|
 |Kerry to go to Paris in gesture of sympathy|joy|REAL|

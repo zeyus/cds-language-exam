@@ -124,7 +124,7 @@ The script creates a CSV file for each text subfolder in the input folder. The C
 Each CSV file contains the following columns:
 
 | Column | Description |
-| --- | --- |
+| :--- | :--- |
 | Filename | The name of the text file |
 | RelFreq NOUN | The relative frequency of nouns in the text |
 | RelFreq VERB | The relative frequency of verbs in the text |
@@ -157,7 +157,7 @@ The followg output CSV files are available in the `out` folder:
 The following is the contents of [b6.csv](https://github.com/zeyus/cds-language-exam/tree/main/assignment_1/out/b6.csv) with the values rounded to 2 decimal places:
 
 | Filename | RelFreq NOUN | RelFreq VERB | RelFreq ADJ | RelFreq ADV | Unique PER | Unique LOC | Unique ORG |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |0107.b6.txt|1724.14|1238.83|855.68|421.46|1|0|1|
 |0137.b6.txt|1735.65|1241.66|934.58|534.05|1|0|0|
 |0151.b6.txt|1491.23|1353.38|651.63|538.85|3|0|0|
