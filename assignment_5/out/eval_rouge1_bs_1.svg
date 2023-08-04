@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1403 400" style="enable-background:new 0 0 1403 400;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#CCCCCC;}
+	.st1{display:none;fill:#212121;enable-background:new    ;}
+	.st2{font-family:calibri;}
+	.st3{font-size:12px;}
+	.st4{fill:#212121;}
+	.st5{clip-path:url(#SVGID_00000124128899867100657310000016629613944611075244_);}
+	.st6{opacity:0.25;fill:none;stroke:#424242;enable-background:new    ;}
+	.st7{fill:none;stroke:#999999;stroke-width:1.5;}
+	.st8{fill:none;stroke:#CC3311;stroke-width:2;}
+	.st9{clip-path:url(#SVGID_00000090987079555455198740000015100835021019463040_);}
+	.st10{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st11{font-family:calibri;}
+	.st12{font-size:21px;}
+	.st13{fill:none;stroke:#C90000;stroke-width:2;}
+</style>
+<g>
+	<g>
+		<g>
+			<g>
+				<g>
+					<line class="st0" x1="62" y1="377" x2="57" y2="377"/>
+					<line class="st0" x1="62" y1="342.7" x2="57" y2="342.7"/>
+					<line class="st0" x1="62" y1="308.5" x2="57" y2="308.5"/>
+					<line class="st0" x1="62" y1="274.2" x2="57" y2="274.2"/>
+					<line class="st0" x1="62" y1="239.9" x2="57" y2="239.9"/>
+					<line class="st0" x1="62" y1="205.6" x2="57" y2="205.6"/>
+					<line class="st0" x1="62" y1="171.4" x2="57" y2="171.4"/>
+					<line class="st0" x1="62" y1="137.1" x2="57" y2="137.1"/>
+					<line class="st0" x1="62" y1="102.8" x2="57" y2="102.8"/>
+					<line class="st0" x1="62" y1="68.5" x2="57" y2="68.5"/>
+					<line class="st0" x1="62" y1="34.3" x2="57" y2="34.3"/>
+					<line class="st0" x1="62" y1="0" x2="57" y2="0"/>
+				</g>
+				<g transform="translate(51.953125, 0)">
+					<text transform="matrix(1 0 0 1 -26.2969 380.6)" class="st1 st2 st3">-1e-3</text>
+					<text transform="matrix(1 0 0 1 -6.5684 346.3273)" class="st4 st2 st3">0</text>
+					<text transform="matrix(1 0 0 1 -22.7402 312.0546)" class="st4 st2 st3">1e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 277.7818)" class="st4 st2 st3">2e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 243.5091)" class="st4 st2 st3">3e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 209.2364)" class="st4 st2 st3">4e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 174.9636)" class="st4 st2 st3">5e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 140.6909)" class="st4 st2 st3">6e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 106.4182)" class="st4 st2 st3">7e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 72.1454)" class="st4 st2 st3">8e-3</text>
+					<text transform="matrix(1 0 0 1 -22.7402 37.8727)" class="st4 st2 st3">9e-3</text>
+					<text transform="matrix(1 0 0 1 -22.2773 3.6)" class="st1 st2 st3">0.01</text>
+				</g>
+				<line class="st0" x1="62" y1="0" x2="62" y2="377"/>
+			</g>
+		</g>
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="61" y="0" width="1341" height="377"/>
+			</defs>
+			<clipPath id="SVGID_00000041291159261161887700000011247407468561619110_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<g transform="translate(61, 0)" style="clip-path:url(#SVGID_00000041291159261161887700000011247407468561619110_);">
+				<g>
+					<g>
+						<g>
+							<line class="st6" x1="0" y1="0" x2="0" y2="377"/>
+							<line class="st6" x1="89.4" y1="0" x2="89.4" y2="377"/>
+							<line class="st6" x1="178.8" y1="0" x2="178.8" y2="377"/>
+							<line class="st6" x1="268.2" y1="0" x2="268.2" y2="377"/>
+							<line class="st6" x1="357.6" y1="0" x2="357.6" y2="377"/>
+							<line class="st6" x1="447" y1="0" x2="447" y2="377"/>
+							<line class="st6" x1="536.4" y1="0" x2="536.4" y2="377"/>
+							<line class="st6" x1="625.8" y1="0" x2="625.8" y2="377"/>
+							<line class="st6" x1="715.2" y1="0" x2="715.2" y2="377"/>
+							<line class="st6" x1="804.6" y1="0" x2="804.6" y2="377"/>
+							<line class="st6" x1="894" y1="0" x2="894" y2="377"/>
+							<line class="st6" x1="983.4" y1="0" x2="983.4" y2="377"/>
+							<line class="st6" x1="1072.8" y1="0" x2="1072.8" y2="377"/>
+							<line class="st6" x1="1162.2" y1="0" x2="1162.2" y2="377"/>
+							<line class="st6" x1="1251.6" y1="0" x2="1251.6" y2="377"/>
+							<line class="st6" x1="1341" y1="0" x2="1341" y2="377"/>
+						</g>
+						<g>
+							<line class="st6" x1="0" y1="377" x2="1341" y2="377"/>
+							<line class="st6" x1="0" y1="342.7" x2="1341" y2="342.7"/>
+							<line class="st6" x1="0" y1="308.5" x2="1341" y2="308.5"/>
+							<line class="st6" x1="0" y1="274.2" x2="1341" y2="274.2"/>
+							<line class="st6" x1="0" y1="239.9" x2="1341" y2="239.9"/>
+							<line class="st6" x1="0" y1="205.6" x2="1341" y2="205.6"/>
+							<line class="st6" x1="0" y1="171.4" x2="1341" y2="171.4"/>
+							<line class="st6" x1="0" y1="137.1" x2="1341" y2="137.1"/>
+							<line class="st6" x1="0" y1="102.8" x2="1341" y2="102.8"/>
+							<line class="st6" x1="0" y1="68.5" x2="1341" y2="68.5"/>
+							<line class="st6" x1="0" y1="34.3" x2="1341" y2="34.3"/>
+							<line class="st6" x1="0" y1="0" x2="1341" y2="0"/>
+						</g>
+					</g>
+				</g>
+				<g>
+					<g>
+						<line class="st7" x1="0" y1="342.7" x2="1341" y2="342.7"/>
+					</g>
+				</g>
+				<g>
+					<g>
+						<line class="st7" x1="89.4" y1="0" x2="89.4" y2="377"/>
+					</g>
+				</g>
+				<g>
+					<g>
+						<g>
+							<g>
+								<g>
+									<path class="st8" d="M111.8,342.7l22.4-60.9l22.4,60.9h22.4h22.4h22.4h22.4h22.4h22.4h22.4h22.4h22.4H380h22.4h22.4H447
+										h22.4l22.4-304.6l22.4,270.8l22.4,6.6l22.4,27.2h22.4h22.4l22.4-92.4l22.4,92.4h22.4h22.4h22.4l22.4-304.6l22.4,304.6
+										l22.4-234.3l22.4,234.3l22.4-80.2l22.4,80.2l22.4-217.6L894,342.7h22.4l22.4-58.6h22.4l22.4-33.8l22.4,92.4h22.4h22.4
+										l22.4-58.6l22.4,58.6h22.4h22.4l22.4-190.4l22.4,190.4h22.4h22.4h22.4"/>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+		<g>
+			<defs>
+				<rect id="SVGID_00000123403875048968444450000015687752461059890089_" x="61" y="377" width="1341" height="23"/>
+			</defs>
+			<clipPath id="SVGID_00000018950352561105123250000012706245748213423020_">
+				<use xlink:href="#SVGID_00000123403875048968444450000015687752461059890089_"  style="overflow:visible;"/>
+			</clipPath>
+			<g transform="translate(61, 377)" style="clip-path:url(#SVGID_00000018950352561105123250000012706245748213423020_);">
+				<g>
+					<g>
+						<line class="st0" x1="0" y1="0" x2="0" y2="5"/>
+						<line class="st0" x1="89.4" y1="0" x2="89.4" y2="5"/>
+						<line class="st0" x1="178.8" y1="0" x2="178.8" y2="5"/>
+						<line class="st0" x1="268.2" y1="0" x2="268.2" y2="5"/>
+						<line class="st0" x1="357.6" y1="0" x2="357.6" y2="5"/>
+						<line class="st0" x1="447" y1="0" x2="447" y2="5"/>
+						<line class="st0" x1="536.4" y1="0" x2="536.4" y2="5"/>
+						<line class="st0" x1="625.8" y1="0" x2="625.8" y2="5"/>
+						<line class="st0" x1="715.2" y1="0" x2="715.2" y2="5"/>
+						<line class="st0" x1="804.6" y1="0" x2="804.6" y2="5"/>
+						<line class="st0" x1="894" y1="0" x2="894" y2="5"/>
+						<line class="st0" x1="983.4" y1="0" x2="983.4" y2="5"/>
+						<line class="st0" x1="1072.8" y1="0" x2="1072.8" y2="5"/>
+						<line class="st0" x1="1162.2" y1="0" x2="1162.2" y2="5"/>
+						<line class="st0" x1="1251.6" y1="0" x2="1251.6" y2="5"/>
+						<line class="st0" x1="1341" y1="0" x2="1341" y2="5"/>
+					</g>
+					<g transform="translate(0, 8)">
+						<text transform="matrix(1 0 0 1 -8.3467 11.4)" class="st1 st2 st3">-20</text>
+						<text transform="matrix(1 0 0 1 86.1189 11.4)" class="st4 st2 st3">0</text>
+						<text transform="matrix(1 0 0 1 172.2379 11.4)" class="st4 st2 st3">20</text>
+						<text transform="matrix(1 0 0 1 261.641 11.4)" class="st4 st2 st3">40</text>
+						<text transform="matrix(1 0 0 1 351.0441 11.4)" class="st4 st2 st3">60</text>
+						<text transform="matrix(1 0 0 1 440.4473 11.4)" class="st4 st2 st3">80</text>
+						<text transform="matrix(1 0 0 1 526.5662 11.4)" class="st4 st2 st3">100</text>
+						<text transform="matrix(1 0 0 1 615.9694 11.4)" class="st4 st2 st3">120</text>
+						<text transform="matrix(1 0 0 1 705.3724 11.4)" class="st4 st2 st3">140</text>
+						<text transform="matrix(1 0 0 1 794.7756 11.4)" class="st4 st2 st3">160</text>
+						<text transform="matrix(1 0 0 1 884.1787 11.4)" class="st4 st2 st3">180</text>
+						<text transform="matrix(1 0 0 1 973.5818 11.4)" class="st4 st2 st3">200</text>
+						<text transform="matrix(1 0 0 1 1062.985 11.4)" class="st4 st2 st3">220</text>
+						<text transform="matrix(1 0 0 1 1152.3881 11.4)" class="st4 st2 st3">240</text>
+						<text transform="matrix(1 0 0 1 1241.7913 11.4)" class="st4 st2 st3">260</text>
+						<text transform="matrix(1 0 0 1 1331.1943 11.4)" class="st1 st2 st3">280</text>
+					</g>
+					<line class="st0" x1="0" y1="0" x2="1341" y2="0"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<rect x="1109" y="14" class="st10" width="265.3" height="49.6"/>
+<text transform="matrix(1 0 0 1 1181.4075 46.7299)" class="st11 st12">rouge_metric_bs_1</text>
+<line class="st13" x1="1124.7" y1="41.3" x2="1159.6" y2="41.3"/>
+</svg>
