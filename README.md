@@ -1,7 +1,7 @@
 ---
 title: Exam Portfolio - Language Analytics
 author: Luke Ring (202009983)
-date: '2023-08-04'
+date: '2023-08-09'
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
@@ -9,7 +9,7 @@ header-includes: |
     \fancyfoot{}
     \fancyhead[LO,LE]{Luke Ring (202009983)}
     \fancyhead[CO,CE]{Exam Portfolio - Language Analytics}
-    \fancyhead[RO,RE]{6.8.2023}
+    \fancyhead[RO,RE]{9.8.2023}
     \fancyfoot[CE,CO]{\thepage}
     \usepackage{fvextra}
     \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
@@ -29,7 +29,7 @@ monofont: FiraCode-VariableFont_wght.ttf
 <div align="center">
 Luke Ring (202009983)
 
-Date: 6.8.2023
+Date: 9.8.2023
 </div>
 
 ## Repositories
